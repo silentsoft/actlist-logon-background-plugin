@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="250.0" prefWidth="380.0" stylesheets="@Plugin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="imagePreview" prefHeight="200.0" styleClass="view-default" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="50.0" spacing="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#setDefaultLogonBackground" text="Default logon background" />
+                  <Button fx:id="customButton" defaultButton="true" mnemonicParsing="false" onAction="#setCustomLogonBackground" text="Custom logon background" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
