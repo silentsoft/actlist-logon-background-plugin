@@ -106,7 +106,7 @@ public class Plugin extends ActlistPlugin {
 				
 				byteArrayOutputStream.close();
 			} catch (Exception e) {
-				
+				raiseException(e);
 			}
 		});
 		
@@ -149,29 +149,37 @@ public class Plugin extends ActlistPlugin {
 	}
 
 	@FXML
-	private void setDefaultLogonBackground() throws Exception {
-		SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 0);
+	private void setDefaultLogonBackground() {
+		try {
+			SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 0);
+		} catch (Exception e) {
+			raiseException(e);
+		}
 	}
 	
 	@FXML
-	private void setCustomLogonBackground() throws Exception {
-		String base64 = getConfig("backgroundDefault.jpg");
-		if (base64 == null || "".equals(base64)) {
-			return; // defense logic to prevent weird exception. it could be situation that the user deleted a config file.
+	private void setCustomLogonBackground() {
+		try {
+			String base64 = getConfig("backgroundDefault.jpg");
+			if (base64 == null || "".equals(base64)) {
+				return; // defense logic to prevent weird exception. it could be situation that the user deleted a config file.
+			}
+			
+			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(Base64.decodeBase64(base64));
+			BufferedImage image = ImageIO.read(byteArrayInputStream);
+			byteArrayInputStream.close();
+			
+			File file = new File("C:\\Windows\\System32\\oobe\\info\\backgrounds\\backgroundDefault.jpg");
+			if (file.getParentFile().exists() == false) {
+				file.getParentFile().mkdirs();
+			}
+			
+			ImageIO.write(image, "jpg", file);
+			
+			SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 1);
+		} catch (Exception e) {
+			raiseException(e);
 		}
-		
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(Base64.decodeBase64(base64));
-		BufferedImage image = ImageIO.read(byteArrayInputStream);
-		byteArrayInputStream.close();
-		
-		File file = new File("C:\\Windows\\System32\\oobe\\info\\backgrounds\\backgroundDefault.jpg");
-		if (file.getParentFile().exists() == false) {
-			file.getParentFile().mkdirs();
-		}
-		
-		ImageIO.write(image, "jpg", file);
-		
-		SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 1);
 	}
 	
 }
