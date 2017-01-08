@@ -106,7 +106,7 @@ public class Plugin extends ActlistPlugin {
 				
 				byteArrayOutputStream.close();
 			} catch (Exception e) {
-				raiseException(e);
+				throwException(e);
 			}
 		});
 		
@@ -153,7 +153,7 @@ public class Plugin extends ActlistPlugin {
 		try {
 			SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 0);
 		} catch (Exception e) {
-			raiseException(e);
+			throwException(e);
 		}
 	}
 	
@@ -178,7 +178,7 @@ public class Plugin extends ActlistPlugin {
 			
 			SystemUtil.writeRegistry("HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\Background", "OEMBackground", RegType.REG_DWORD, 1);
 		} catch (Exception e) {
-			raiseException(e);
+			throwException(e);
 		}
 	}
 	
