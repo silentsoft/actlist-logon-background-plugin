@@ -3,6 +3,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.List;
 
 import javafx.embed.swing.SwingFXUtils;
@@ -31,14 +32,19 @@ public class Plugin extends ActlistPlugin {
 	@FXML
 	private Button customButton;
 	
-	public static void main(String args[]) throws Exception {}
+	public static void main(String args[]) throws Exception {
+		//debug();
+	}
 	
 	public Plugin() {
 		super("Custom Logon Background");
 		
+		setPluginVersion("1.0.1");
+		setPluginAuthor("silentsoft.org", URI.create("https://github.com/silentsoft/actlist-plugin-logon-background"));
+		setPluginUpdateCheckURI(URI.create("http://silentsoft.org/actlist/plugin/47878d31/update/check"));
 		setPluginDescription("Custom Logon Background for Windows 7");
-		setPluginVersion("1.0.0");
-		setPluginAuthor("Silentsoft (http://silentsoft.org)");
+		
+		setMinimumCompatibleVersion(1, 2, 6);
 	}
 	
 	@Override
