@@ -23,7 +23,7 @@
 		<silentsoft.core.version>1.0.2</silentsoft.core.version>
 
 		<!-- Actlist -->
-		<actlist.plugin.version>1.0.0</actlist.plugin.version>
+		<actlist.plugin.version>1.0.1</actlist.plugin.version>
 	</properties>
 
 	<build>
