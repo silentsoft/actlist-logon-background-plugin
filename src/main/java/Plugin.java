@@ -41,7 +41,7 @@ public class Plugin extends ActlistPlugin {
 		
 		setPluginVersion("1.0.1");
 		setPluginAuthor("silentsoft.org", URI.create("https://github.com/silentsoft/actlist-plugin-logon-background"));
-		setPluginUpdateCheckURI(URI.create("http://silentsoft.org/actlist/plugin/47878d31/update/check"));
+		setPluginUpdateCheckURI(URI.create("http://actlist.silentsoft.org/api/plugin/47878d31/update/check"));
 		setPluginDescription("Custom Logon Background for Windows 7");
 		
 		setMinimumCompatibleVersion(1, 2, 6);
