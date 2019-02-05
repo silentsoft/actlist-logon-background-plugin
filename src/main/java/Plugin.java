@@ -33,7 +33,7 @@ public class Plugin extends ActlistPlugin {
 	private Button customButton;
 	
 	public static void main(String args[]) throws Exception {
-		//debug();
+		debug();
 	}
 	
 	public Plugin() {
